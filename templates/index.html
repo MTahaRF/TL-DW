@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TL;DW - Too Long; Didn't Watch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+        "imports": {
+            "docx": "https://cdn.jsdelivr.net/npm/docx@8.2.3/build/index.min.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div class="hero-content">
+                <div class="logo">
+                    <h1 class="logo-text">TL;DW</h1>
+                    <p>Too Long; Didn't Watch</p>
+                </div>
+                
+                <div class="submission-form">
+                    <h3>Submit YouTube Videos</h3>
+                    <p>Add the URLs of the videos you want summarized</p>
+                    <div class="form-controls">
+                        <div class="link-type-selector">
+                            <select id="link-type">
+                                <option value="video">Video Links</option>
+                                <option value="playlist">Playlist Link</option>
+                            </select>
+                        </div>
+                        <div class="language-selector">
+                            <select id="language-select">
+                                <option value="English">English</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="French">French</option>
+                                <option value="German">German</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Korean">Korean</option>
+                                <option value="Arabic">Arabic</option>
+                                <option value="Russian">Russian</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="videos-table">
+                        <div class="table-header">
+                            <div class="col-index">#</div>
+                            <div class="col-link">Video URL</div>
+                            <div class="col-action">Action</div>
+                        </div>
+                        <div class="table-body" id="videos-list">
+                            <!-- Video entries will be added here -->
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="add-more-btn">
+                            <i class="fas fa-plus"></i>
+                            Add More
+                        </button>
+                        <button id="submit-all-btn">Submit All</button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="results-section" class="results-section" style="display: none;">
+                    <div class="results-header">
+                        <h3>Video Summaries</h3>
+                        <div class="download-options">
+                            <button class="download-btn" id="download-docx">
+                                <i class="fas fa-file-word"></i>
+                                Download DOCX
+                            </button>
+                        </div>
+                    </div>
+                    <div id="video-results" class="video-results">
+                        <!-- Video result tabs will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="info-section">
+        <div class="info-card">
+            <i class="fas fa-info-circle"></i>
+            <h4>How It Works</h4>
+            <ol>
+                <li>Choose between submitting individual videos or a playlist</li>
+                <li>Paste YouTube video links in the table</li>
+                <li>Add as many videos as you need (or one playlist)</li>
+                <li>Submit to generate summaries for all</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Template for video result tab -->
+    <template id="video-result-template">
+        <div class="video-result">
+            <div class="video-tab">
+                <div class="tab-header">
+                    <span class="video-title"></span>
+                    <button class="toggle-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="tab-content">
+                    <div class="content-section">
+                        <h4>Video</h4>
+                        <div class="video-embed"></div>
+                    </div>
+                    <div class="content-section">
+                        <h4>Summary</h4>
+                        <div class="summary-text"></div>
+                    </div>
+                    <div class="content-section">
+                        <h4>Translation</h4>
+                        <div class="translation-text"></div>
+                    </div>
+                    <div class="content-section">
+                        <h4>TL;DW</h4>
+                        <div class="tldw-text"></div>
+                        <div class="tldw-controls">
+                            <button class="highlight-btn">
+                                <i class="fas fa-film"></i>
+                                <span class="highlight-text">Generate TL;DW</span>
+                            </button>
+                            <button class="download-highlight-btn" style="display: none;">
+                                <i class="fas fa-download"></i>
+                                <span class="highlight-text">Download TL;DW</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2025 TL;DW. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
