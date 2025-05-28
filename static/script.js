@@ -1,6 +1,6 @@
 // Configuration
 const config = {
-    API_BASE_URL: 'http://localhost:5000' // Local Flask server URL
+    API_BASE_URL: 'https://tl-dw.onrender.com/' // Local Flask server URL
 };
 
 // Utility function for API calls
