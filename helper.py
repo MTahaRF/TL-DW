@@ -29,7 +29,6 @@ from google.generativeai import GenerativeModel
 import google.generativeai as genai
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
-import cv2
 
 # Configure Google API
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY', 'AIzaSyABCalHpFkvdfOu_K04MqKX3zAt-fndd1g')  # Fallback to hardcoded key if env var not set
